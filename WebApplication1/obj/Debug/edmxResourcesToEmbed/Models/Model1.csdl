@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CotizadorrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActividadRealizar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cotizacion" Relationship="Self.FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID" FromRole="ActividadRealizar" ToRole="Cotizacion" />
+  </EntityType>
+  <EntityType Name="Cotizacion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idFast" Type="Int64" Nullable="false" />
+    <Property Name="idEmpresa" Type="Int64" Nullable="false" />
+    <Property Name="nombreEmpresa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaAprobacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaFactura" Type="DateTime" Precision="3" />
+    <Property Name="referenciaPresupuesto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numeroOrden" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numeroFactura" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="usuCreacion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="ProveedorID" Type="Int64" Nullable="false" />
+    <Property Name="EstadoCotizacionID" Type="Int32" Nullable="false" />
+    <Property Name="DivisaID" Type="Int32" Nullable="false" />
+    <Property Name="matricula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="kmActuales" Type="Int64" Nullable="false" />
+    <Property Name="administracion" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IvaAdministracionID" Type="Int32" Nullable="false" />
+    <Property Name="refacturarIva" Type="Boolean" Nullable="false" />
+    <Property Name="RegionalID" Type="Int32" Nullable="false" />
+    <Property Name="refacturacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fechaRefacturacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaOrden" Type="DateTime" Precision="3" />
+    <Property Name="porcentajeDescuentoNomina" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="cuotasDescuentoNomina" Type="Int32" Nullable="false" />
+    <Property Name="fechaInicioDescuentoNomina" Type="DateTime" Precision="3" />
+    <Property Name="fechaRegistroDescuentoNomina" Type="DateTime" Precision="3" />
+    <Property Name="totalDescuentoNomina" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="idFlota" Type="Int64" Nullable="false" />
+    <Property Name="cobraAdministracion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="idIncidencia" Type="Int64" />
+    <Property Name="ResponsableCobroID" Type="Int32" Nullable="false" />
+    <Property Name="actividadRealizarAntiguo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="actividadRealizarID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ActividadRealizar" Relationship="Self.FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID" FromRole="Cotizacion" ToRole="ActividadRealizar" />
+  </EntityType>
+  <Association Name="FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID">
+    <End Role="ActividadRealizar" Type="Self.ActividadRealizar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cotizacion" Type="Self.Cotizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadRealizar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cotizacion">
+        <PropertyRef Name="actividadRealizarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CotizadorrEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActividadRealizar" EntityType="Self.ActividadRealizar" />
+    <EntitySet Name="Cotizacion" EntityType="Self.Cotizacion" />
+    <AssociationSet Name="FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID" Association="Self.FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID">
+      <End Role="ActividadRealizar" EntitySet="ActividadRealizar" />
+      <End Role="Cotizacion" EntitySet="Cotizacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

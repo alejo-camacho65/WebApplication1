@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CotizadorrModelStoreContainer" CdmEntityContainer="CotizadorrEntities">
+    <EntitySetMapping Name="ActividadRealizar">
+      <EntityTypeMapping TypeName="CotizadorrModel.ActividadRealizar">
+        <MappingFragment StoreEntitySet="ActividadRealizar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cotizacion">
+      <EntityTypeMapping TypeName="CotizadorrModel.Cotizacion">
+        <MappingFragment StoreEntitySet="Cotizacion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="idFast" ColumnName="idFast" />
+          <ScalarProperty Name="idEmpresa" ColumnName="idEmpresa" />
+          <ScalarProperty Name="nombreEmpresa" ColumnName="nombreEmpresa" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="fechaAprobacion" ColumnName="fechaAprobacion" />
+          <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+          <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+          <ScalarProperty Name="referenciaPresupuesto" ColumnName="referenciaPresupuesto" />
+          <ScalarProperty Name="numeroOrden" ColumnName="numeroOrden" />
+          <ScalarProperty Name="numeroFactura" ColumnName="numeroFactura" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="usuCreacion" ColumnName="usuCreacion" />
+          <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
+          <ScalarProperty Name="EstadoCotizacionID" ColumnName="EstadoCotizacionID" />
+          <ScalarProperty Name="DivisaID" ColumnName="DivisaID" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="kmActuales" ColumnName="kmActuales" />
+          <ScalarProperty Name="administracion" ColumnName="administracion" />
+          <ScalarProperty Name="IvaAdministracionID" ColumnName="IvaAdministracionID" />
+          <ScalarProperty Name="refacturarIva" ColumnName="refacturarIva" />
+          <ScalarProperty Name="RegionalID" ColumnName="RegionalID" />
+          <ScalarProperty Name="refacturacion" ColumnName="refacturacion" />
+          <ScalarProperty Name="fechaRefacturacion" ColumnName="fechaRefacturacion" />
+          <ScalarProperty Name="fechaOrden" ColumnName="fechaOrden" />
+          <ScalarProperty Name="porcentajeDescuentoNomina" ColumnName="porcentajeDescuentoNomina" />
+          <ScalarProperty Name="cuotasDescuentoNomina" ColumnName="cuotasDescuentoNomina" />
+          <ScalarProperty Name="fechaInicioDescuentoNomina" ColumnName="fechaInicioDescuentoNomina" />
+          <ScalarProperty Name="fechaRegistroDescuentoNomina" ColumnName="fechaRegistroDescuentoNomina" />
+          <ScalarProperty Name="totalDescuentoNomina" ColumnName="totalDescuentoNomina" />
+          <ScalarProperty Name="idFlota" ColumnName="idFlota" />
+          <ScalarProperty Name="cobraAdministracion" ColumnName="cobraAdministracion" />
+          <ScalarProperty Name="idIncidencia" ColumnName="idIncidencia" />
+          <ScalarProperty Name="ResponsableCobroID" ColumnName="ResponsableCobroID" />
+          <ScalarProperty Name="actividadRealizarAntiguo" ColumnName="actividadRealizarAntiguo" />
+          <ScalarProperty Name="actividadRealizarID" ColumnName="actividadRealizarID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

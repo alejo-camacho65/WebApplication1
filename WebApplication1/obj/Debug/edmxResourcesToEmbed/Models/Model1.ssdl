@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CotizadorrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActividadRealizar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cotizacion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idFast" Type="bigint" Nullable="false" />
+    <Property Name="idEmpresa" Type="bigint" Nullable="false" />
+    <Property Name="nombreEmpresa" Type="varchar" MaxLength="60" />
+    <Property Name="fechaCreacion" Type="datetime" />
+    <Property Name="fechaAprobacion" Type="datetime" />
+    <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
+    <Property Name="fechaFactura" Type="datetime" />
+    <Property Name="referenciaPresupuesto" Type="varchar" MaxLength="20" />
+    <Property Name="numeroOrden" Type="varchar" MaxLength="20" />
+    <Property Name="numeroFactura" Type="varchar" MaxLength="20" />
+    <Property Name="observacion" Type="varchar" MaxLength="300" />
+    <Property Name="usuCreacion" Type="varchar" MaxLength="256" />
+    <Property Name="ProveedorID" Type="bigint" Nullable="false" />
+    <Property Name="EstadoCotizacionID" Type="int" Nullable="false" />
+    <Property Name="DivisaID" Type="int" Nullable="false" />
+    <Property Name="matricula" Type="varchar" MaxLength="20" />
+    <Property Name="kmActuales" Type="bigint" Nullable="false" />
+    <Property Name="administracion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IvaAdministracionID" Type="int" Nullable="false" />
+    <Property Name="refacturarIva" Type="bit" Nullable="false" />
+    <Property Name="RegionalID" Type="int" Nullable="false" />
+    <Property Name="refacturacion" Type="varchar" MaxLength="20" />
+    <Property Name="fechaRefacturacion" Type="datetime" />
+    <Property Name="fechaOrden" Type="datetime" />
+    <Property Name="porcentajeDescuentoNomina" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="cuotasDescuentoNomina" Type="int" Nullable="false" />
+    <Property Name="fechaInicioDescuentoNomina" Type="datetime" />
+    <Property Name="fechaRegistroDescuentoNomina" Type="datetime" />
+    <Property Name="totalDescuentoNomina" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="idFlota" Type="bigint" Nullable="false" />
+    <Property Name="cobraAdministracion" Type="varchar" MaxLength="1" />
+    <Property Name="idIncidencia" Type="bigint" />
+    <Property Name="ResponsableCobroID" Type="int" Nullable="false" />
+    <Property Name="actividadRealizarAntiguo" Type="varchar" MaxLength="150" />
+    <Property Name="actividadRealizarID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID">
+    <End Role="ActividadRealizar" Type="Self.ActividadRealizar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cotizacion" Type="Self.Cotizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActividadRealizar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cotizacion">
+        <PropertyRef Name="actividadRealizarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CotizadorrModelStoreContainer">
+    <EntitySet Name="ActividadRealizar" EntityType="Self.ActividadRealizar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cotizacion" EntityType="Self.Cotizacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID" Association="Self.FK_dbo_Cotizacion_dbo_ActividadRealizar_actividadRealizarID">
+      <End Role="ActividadRealizar" EntitySet="ActividadRealizar" />
+      <End Role="Cotizacion" EntitySet="Cotizacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
